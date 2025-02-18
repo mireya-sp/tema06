@@ -160,16 +160,4 @@ public class DynamicArray<T> {
         }
         return false;
     }
-
-    public static void main(String[] args){
-        DynamicArray array = new DynamicArray();
-        array.add(7);
-        array.add(4);
-        array.add(93);
-        array.add(2);
-        System.out.println(array.toString());
-        array.clear();
-        System.out.println(array.toString());
-        //Falla el clon porque el toString sale curiosito
-    }
 }

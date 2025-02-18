@@ -108,17 +108,4 @@ public class Cola<T> {
         }
         data = aux;
     }
-
-    public static void main(String[] args){
-        Cola cola = new Cola();
-        cola.add(7);
-        cola.add(4);
-        cola.add(93);
-        cola.add(2);
-        System.out.println(cola.toString());
-
-        System.out.println(cola.clon());
-        //Falla el clon porque el toString sale curiosito
-
-    }
 }

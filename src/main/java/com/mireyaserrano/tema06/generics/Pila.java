@@ -119,17 +119,4 @@ public class Pila<T> {
         }
         data = aux;
     }
-
-    public static void main(String[] args){
-        Pila pila = new Pila();
-        pila.push(7);
-        pila.push(4);
-        pila.push(93);
-        pila.push(2);
-        System.out.println(pila.toString());
-        pila.clear();
-        System.out.println(pila.toString());
-        //Falla el peek y clon porque el toString sale curiosito
-
-    }
 }
