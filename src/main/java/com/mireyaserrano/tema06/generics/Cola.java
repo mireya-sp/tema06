@@ -91,6 +91,7 @@ public class Cola<T> {
     }
 
     public int search(T element){
+        if (isEmpty()){ return -1; }
         for (int i = 0; i < size - 1; i++){
             if (data[i] == element){
                 return size - i;//Devuelve la posición empezando de 0, para que sea la posición 'natural' habria que poner + 1

@@ -102,6 +102,7 @@ public class Pila<T> {
     }
 
     public int search(T element){
+        if (isEmpty()){ return -1; }
         for (int i = 0; i < size; i++){
             if (element == data[i]){
                 return size - i;
