@@ -1,4 +1,6 @@
-package com.mireyaserrano.tema06.pilasycolas;
+package com.mireyaserrano.tema06.pilasycolas.ejercicio06;
+
+import com.mireyaserrano.tema06.pilasycolas.Ejercicio01.DynamicArray;
 
 public class Cola {
     /** Capacidad inicial por defecto */

@@ -4,60 +4,43 @@ import java.util.Objects;
 
 public class Asignatura {
 
-    private String nombre;
-    private int codigo;
-    private String curso;
+    private final int codigo;
+    private final String nombre;
+    private final int curso;
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
+    public Asignatura(int codigo, String nombre, int curso) {
+        this.codigo = codigo;
         this.nombre = nombre;
+        this.curso = curso;
     }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getCurso() {
+    public int getCurso() {
         return curso;
     }
 
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    public Asignatura(String nombre, int codigo, String curso) {
-        this.nombre = nombre;
-        this.codigo = codigo;
-        this.curso = curso;
-    }
-
     @Override
-    public String toString() {
-        return "Asignatura{" +
-                "Nombre='" + nombre + '\'' +
-                ", Código=" + codigo +
-                ", Curso='" + curso + '\'' +
-                '}';
-    }
+    public final boolean equals(Object o) {
+        if (!(o instanceof Asignatura that)) return false;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Asignatura that = (Asignatura) o;
         return codigo == that.codigo;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(codigo);
+        return codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "Asignatura: " + codigo + ". Código: " + codigo + ". Curso: " + curso;
     }
 
 }

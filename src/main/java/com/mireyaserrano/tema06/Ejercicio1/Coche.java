@@ -1,33 +1,31 @@
 package com.mireyaserrano.tema06.Ejercicio1;
 
+import java.time.LocalDate;
+
 public class Coche {
-    public enum TipoCoche{
-        MINI, UTILITARIO, FAMILIAR, DEPORTIVO
-    }
-    public enum ModalidadSeguro{
-        TERCEROS, TODO_RIESGO
-    }
+    public enum TipoCoche {MINI, UTILITARIO, FAMILIAR, DEPORTIVO}
+    public enum ModalidadSeguro {TERCEROS, TODORIESGO}
+    private String matricula;
     private String modelo;
     private String color;
-    private boolean metal;
-    private String matricula;
+    private boolean metalizada;
     private TipoCoche tipo;
-    private int anoFabricacion;
+    private int anyo;
     private ModalidadSeguro seguro;
 
-    private static int numero = 0;
-    private static char letra1 = 'A';
-    private static char letra2 = 'A';
-    private static char letra3 = 'A';
-
-    public Coche(String modelo, String color, boolean metal, TipoCoche tipo, int anoFabricacion, ModalidadSeguro seguro) {
+    public Coche(String modelo, String color, boolean metalizada, String matricula, TipoCoche tipo, int anyo, ModalidadSeguro seguro) {
         this.modelo = modelo;
         this.color = color;
-        this.metal = metal;
-        this.matricula = generarMatricula();
+        this.metalizada = metalizada;
+        this.matricula = matricula;
         this.tipo = tipo;
-        this.anoFabricacion = anoFabricacion;
+        this.anyo = anyo;
         this.seguro = seguro;
+    }
+
+    public Coche() {
+        this("Unknown", "Blanco", false, "Unknown", TipoCoche.UTILITARIO,
+                LocalDate.now().getYear(), ModalidadSeguro.TERCEROS);
     }
 
     public String getModelo() {
@@ -46,12 +44,12 @@ public class Coche {
         this.color = color;
     }
 
-    public boolean isMetal() {
-        return metal;
+    public boolean isMetalizada() {
+        return metalizada;
     }
 
-    public void setMetal(boolean metal) {
-        this.metal = metal;
+    public void setMetalizada(boolean metalizada) {
+        this.metalizada = metalizada;
     }
 
     public String getMatricula() {
@@ -70,12 +68,12 @@ public class Coche {
         this.tipo = tipo;
     }
 
-    public int getAnoFabricacion() {
-        return anoFabricacion;
+    public int getAnyo() {
+        return anyo;
     }
 
-    public void setAnoFabricacion(int anoFabricacion) {
-        this.anoFabricacion = anoFabricacion;
+    public void setAnyo(int anyo) {
+        this.anyo = anyo;
     }
 
     public ModalidadSeguro getSeguro() {
@@ -86,33 +84,28 @@ public class Coche {
         this.seguro = seguro;
     }
 
-    public static String generarMatricula(){
-        String matricula = String.format("%04d%c%c%c",numero,letra3,letra2,letra1);
-        numero++;
-        if(numero > 9999){
-            numero = 0;
-            letra1++;
-            if(letra1 > 'Z'){
-                letra1 = 'A';
-                letra2++;
-                if(letra2 > 'Z'){
-                    letra2 = 'A';
-                }
-            }
-        }
-        return matricula;
+    @Override
+    public final boolean equals(Object o) {
+        if (!(o instanceof Coche coche)) return false;
+
+        return matricula.equals(coche.matricula);
+    }
+
+    @Override
+    public int hashCode() {
+        return matricula.hashCode();
     }
 
     @Override
     public String toString() {
         return "Coche{" +
-                "Modelo='" + modelo + '\'' +
-                ", Color='" + color + '\'' +
-                ", Metalizado=" + metal +
-                ", Matricula='" + matricula + '\'' +
-                ", Tipo de coche=" + tipo +
-                ", Año fabricacion=" + anoFabricacion +
-                ", Tipo de seguro=" + seguro +
+                "modelo='" + modelo + '\'' +
+                ", color='" + color + '\'' +
+                ", metalizada=" + metalizada +
+                ", matricula='" + matricula + '\'' +
+                ", tipo=" + tipo +
+                ", anyo=" + anyo +
+                ", seguro=" + seguro +
                 '}';
     }
 
